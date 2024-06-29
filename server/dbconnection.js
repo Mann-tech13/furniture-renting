@@ -8,14 +8,16 @@ con.connect(function (err) {
 });
 
 function query(query) {
-  con.query(query, function (err, result) {
-    if (err) {
-        console.log('(Error executing query): ', err)
-      throw err;
-    }
-    console.log(`(Executed query): ${query}`);
-    console.log(`(Result): ${JSON.stringify(result)}`);
-    return result;
+  return new Promise((resolve, reject) => {
+    con.query(query, (err, result) => {
+      if (err) {
+        console.log('(Error executing query): ', err);
+        return reject(err);
+      }
+      console.log(`(Executed query): ${query}`);
+      console.log(`(Result): ${JSON.stringify(result)}`);
+      resolve(result);
+    });
   });
 }
 
