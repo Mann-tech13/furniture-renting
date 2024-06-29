@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../common/Navbar";
+import FurnitureList from "../landingPage/FurnitureList";
 
 function LandingPage() {
   const user = {
@@ -9,7 +10,9 @@ function LandingPage() {
   return (
     <div>
       <div>
-        <Navbar  user={user}/>
+        <Navbar  />
+        <FurnitureList />
+
       </div>
     </div>
   );
