@@ -16,7 +16,7 @@ const Navbar = ({ user }) => {
         </>
       ) : (
         <>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
@@ -39,8 +39,8 @@ const Navbar = ({ user }) => {
               <div className="hidden  md:block">
                 <div className="ml-4 flex items-center md:ml-6">
                   {user ? (
-                    <>
-                      <Link to="/cart" className="mx-10">
+                    <>    
+                      <Link to="/cart" className="mx-5">
                         <span className="mx-3">
                           <ShoppingCartIcon className="h-5 w-5 text-gray-500 group-hover:text-primeColor" />
                         </span>
@@ -58,12 +58,12 @@ const Navbar = ({ user }) => {
                         </button>
                         {dropdownOpen && (
                           <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-10">
-                            <a
-                              href="/profile"
+                            <Link
+                              to="/profile"
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             >
                               Profile
-                            </a>
+                            </Link>
                             <Link
                               to="/collections"
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -76,7 +76,12 @@ const Navbar = ({ user }) => {
                             >
                               Previous Rentals
                             </Link>
-
+                            <Link
+                              to="/add-furniture"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              Add Furniture
+                            </Link>
                             <a
                               href="/signout"
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

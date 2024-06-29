@@ -6,6 +6,8 @@ import Navbar from './components/common/Navbar';
 import Collections from "./components/collections/Collections";
 import RentedFurniture from './components/RentedFurniture/RentedFurniture';
 import Cart from './components/cart/cart';
+import Rent from './components/rent/rent';
+import UserProfile from './components/profile/profile';
 
 const user = {
   profilePicture:
@@ -25,6 +27,11 @@ function App() {
         <Route path='/collections' element={<Collections/>} />
         <Route path='/rented-furniture' element={<RentedFurniture/>} />
         <Route path='/cart' element={<Cart/>} />
+        <Route path='/add-furniture' element={<Rent/>} />
+        <Route path='/profile' element={<UserProfile/>} />
+
+
+
 
 
 
