@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Auth from "../auth/auth";
+import { Link } from "react-router-dom";
 import Rent from "../rent/rent";
 
 const Navbar = ({ user }) => {
