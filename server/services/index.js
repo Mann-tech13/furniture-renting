@@ -1,6 +1,10 @@
-const { query } = require("../dbconnection")
+const { query } = require("../dbconnection");
 
-exports.homePage = (req,res) => {
-    query('SELECT 1 AS "1"')
-    res.send('Home Page')
-}
+exports.homePage = (req, res) => {
+  try {
+    query('SELECT 1 AS "1"');
+    res.status(200).send("Home Page");
+  } catch (error) {
+    handleError(error, res);
+  }
+};

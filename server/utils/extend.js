@@ -5,4 +5,11 @@ const handleError = (err, res) => {
   return;
 };
 
-module.exports = { handleError };
+const badRequest = (err, res) => {
+  res.status(400).json({
+    message: err.message || "Bad Request",
+  });
+  return;
+};
+
+module.exports = { handleError, badRequest };
