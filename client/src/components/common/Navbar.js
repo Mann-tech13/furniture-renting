@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Auth from "../auth/auth";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ user }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -10,7 +11,7 @@ const Navbar = ({ user }) => {
     <nav className="bg-white shadow-md">
       {authModal ? (
         <>
-          <Auth setAuthModal={setAuthModal}/>
+          <Auth setAuthModal={setAuthModal} />
         </>
       ) : (
         <>
@@ -18,9 +19,9 @@ const Navbar = ({ user }) => {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <a href="/" className="text-2xl font-bold text-gray-800">
+                  <Link to="/" className="text-2xl font-bold text-gray-800">
                     Rentify
-                  </a>
+                  </Link>
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
