@@ -18,7 +18,7 @@ function Modal({ children, setAuthModal, setIsRent }) {
       To: "opacity-0"
    */}
       <div
-        className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        className="fixed inset-0 bg-white bg-opacity-75 transition-opacity"
         aria-hidden="true"
       ></div>
 
