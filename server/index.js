@@ -7,6 +7,8 @@ require("dotenv").config();
 const indexController = require("./controllers/index.js");
 const userController = require("./controllers/user.js");
 const furnitureController = require("./controllers/furniture.js");
+const transactionController = require("./controllers/transaction.js");
+
 
 const app = express();
 app.use(express.json());
@@ -17,6 +19,7 @@ app.use(cors());
 app.use("/", indexController);
 app.use("/user", userController);
 app.use("/furniture", furnitureController);
+app.use("/transaction", transactionController);
 
 
 app.listen(process.env.PORT, () => {
