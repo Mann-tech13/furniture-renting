@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../common/Navbar";
+import FurnitureList from "../landingPage/FurnitureList";
 
 function LandingPage() {
   const user = {
@@ -10,6 +11,8 @@ function LandingPage() {
     <div>
       <div>
         <Navbar  />
+        <FurnitureList />
+
       </div>
     </div>
   );
