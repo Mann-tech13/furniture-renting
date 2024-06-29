@@ -1,10 +1,11 @@
-import Auth from "./components/auth/auth";
-import Modal from "./components/common/modal";
+import logo from './logo.svg';
+import './App.css';
+import LandingPage from './components/landingPage/LandingPage';
 
 function App() {
   return (
-    <div>
-      <Auth/>
+    <div className="App">
+     <LandingPage />
     </div>
   );
 }
