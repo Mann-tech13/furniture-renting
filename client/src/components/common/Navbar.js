@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Auth from "../auth/auth";
 import { Link } from "react-router-dom";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 const Navbar = ({ user }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -35,43 +36,57 @@ const Navbar = ({ user }) => {
                   </div>
                 </div>
               </div>
-              <div className="hidden md:block">
+              <div className="hidden  md:block">
                 <div className="ml-4 flex items-center md:ml-6">
                   {user ? (
-                    <div className="relative">
-                      <button
-                        className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none"
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
-                      >
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src={user.profilePicture}
-                          alt=""
-                        />
-                      </button>
-                      {dropdownOpen && (
-                        <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
-                          <a
-                            href="/profile"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Profile
-                          </a>
-                          <a
-                            href="/bookings"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            My Bookings
-                          </a>
-                          <a
-                            href="/signout"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Sign Out
-                          </a>
-                        </div>
-                      )}
-                    </div>
+                    <>
+                      <Link to="/cart" className="mx-10">
+                        <span className="mx-3">
+                          <ShoppingCartIcon className="h-5 w-5 text-gray-500 group-hover:text-primeColor" />
+                        </span>
+                      </Link>
+                      <div className="relative">
+                        <button
+                          className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none"
+                          onClick={() => setDropdownOpen(!dropdownOpen)}
+                        >
+                          <img
+                            className="h-8 w-8 rounded-full"
+                            src={user.profilePicture}
+                            alt=""
+                          />
+                        </button>
+                        {dropdownOpen && (
+                          <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-10">
+                            <a
+                              href="/profile"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              Profile
+                            </a>
+                            <Link
+                              to="/collections"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              My collections
+                            </Link>
+                            <Link
+                              to="/rented-furniture"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              Previous Rentals
+                            </Link>
+
+                            <a
+                              href="/signout"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              Sign Out
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    </>
                   ) : (
                     <p
                       className="text-sm font-medium text-gray-700 hover:text-gray-900 cursor-pointer"
@@ -122,40 +137,42 @@ const Navbar = ({ user }) => {
                 placeholder="Search..."
               />
               {user ? (
-                <div className="relative">
-                  <button
-                    className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none mt-2"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                  >
-                    <img
-                      className="h-8 w-8 rounded-full"
-                      src={user.profilePicture}
-                      alt=""
-                    />
-                  </button>
-                  {dropdownOpen && (
-                    <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
-                      <a
-                        href="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Profile
-                      </a>
-                      <a
-                        href="/bookings"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        My Bookings
-                      </a>
-                      <a
-                        href="/signout"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Sign Out
-                      </a>
-                    </div>
-                  )}
-                </div>
+                <>
+                  <div className="relative">
+                    <button
+                      className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none mt-2"
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                    >
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src={user.profilePicture}
+                        alt=""
+                      />
+                    </button>
+                    {dropdownOpen && (
+                      <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
+                        <a
+                          href="/profile"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Profile
+                        </a>
+                        <a
+                          href="/bookings"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          My Bookings
+                        </a>
+                        <a
+                          href="/signout"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Sign Out
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </>
               ) : (
                 <a
                   href="/login"

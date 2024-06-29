@@ -1,13 +1,7 @@
 import React from "react";
 import FurnitureList from "../landingPage/FurnitureList";
 
-function LandingPage() {
-  const user = {
-    profilePicture:
-      "https://p7.hiclipart.com/preview/722/101/213/computer-icons-user-profile-circle-abstract.jpg",
-    // Other user properties
-  };
-
+function Collections() {
   const furnitureItems = [
     {
       id: 1,
@@ -23,7 +17,7 @@ function LandingPage() {
       price: "$200",
       category: "Dining Room",
       img: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
-  
+
       color: "Brown",
     },
     {
@@ -32,7 +26,7 @@ function LandingPage() {
       price: "$100",
       category: "Office",
       img: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
-  
+
       color: "Black",
     },
     {
@@ -41,17 +35,15 @@ function LandingPage() {
       price: "$100",
       category: "Office",
       img: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
-  
+
       color: "Black",
     },
   ];
   return (
-    <div>
-      <div>
-        <FurnitureList furnitureItems={furnitureItems} listType="Home Makeovers, Made Affordable." />
-      </div>
+    <div className="bg-gray-100">
+      <FurnitureList furnitureItems={furnitureItems} listType="My collections" />
     </div>
   );
 }
 
-export default LandingPage;
+export default Collections;

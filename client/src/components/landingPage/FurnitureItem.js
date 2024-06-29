@@ -4,6 +4,7 @@ import {
   ShoppingCartIcon,
   HeartIcon,
 } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const FurnitureItem = (props) => {
   const [isInWishlist, setIsInWishlist] = useState(false);
@@ -27,38 +28,50 @@ const FurnitureItem = (props) => {
         </div>
         <div className="w-full h-32 absolute bg-white -bottom-[130px] group-hover:bottom-0 duration-700">
           <ul className="w-full h-full flex flex-col items-end justify-center gap-2 font-titleFont px-2 border-l border-r">
-            <li className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full">
+            <Link
+              to="/cart"
+              className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full"
+            >
               Rent Now
               <span className="ml-2">
                 <ShoppingCartIcon className="h-5 w-5 text-gray-500 group-hover:text-primeColor" />
               </span>
-            </li>
-            <li className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full">
+            </Link>
+
+            <Link
+              to="/view-details/id"
+              className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full"
+            >
               View Details
               <span className="ml-2">
                 <ArrowRightIcon className="h-5 w-5 text-gray-500 group-hover:text-primeColor" />
               </span>
-            </li>
-            <li
-              className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full"
-              onClick={handleAddToWishlist} // Handle wishlist addition on click
-            >
-              {isInWishlist ? (
-                <>
-                  Added to Wishlist
-                  <span className="ml-2">
-                    <HeartIcon className="h-5 w-5 text-red-500 group-hover:text-primeColor" />
-                  </span>
-                </>
-              ) : (
-                <>
-                  Add to Wish List
-                  <span className="ml-2">
-                    <HeartIcon className="h-5 w-5 text-gray-500 group-hover:text-primeColor" />
-                  </span>
-                </>
-              )}
-            </li>
+            </Link>
+            {props.listType !== "My collections" && (
+              <li
+                className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full"
+                onClick={handleAddToWishlist} // Handle wishlist addition on click
+              >
+                {isInWishlist ? (
+                  <>
+                    Added to Collections
+                    <span className="ml-2">
+                      <HeartIcon
+                        color="red"
+                        className="h-5 w-5 text-red-500 group-hover:text-primeColor"
+                      />
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Add to Collections
+                    <span className="ml-2">
+                      <HeartIcon className="h-5 w-5 text-gray-500 group-hover:text-primeColor" />
+                    </span>
+                  </>
+                )}
+              </li>
+            )}
           </ul>
         </div>
       </div>
