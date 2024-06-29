@@ -27,3 +27,5 @@ app.listen(process.env.PORT, () => {
   console.log(`Furniture Rent Backend listening at ${process.env.PORT}`);
 });
 
+
+module.exports = app;
