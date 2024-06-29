@@ -3,7 +3,6 @@ const { handleError, badRequest } = require("../utils/extend");
 
 const furnitureTable = "tblm_furniture_details";
 exports.getFurniture = async (req, res) => {
-  console.log('asf')
     const params = req.params;
     try {
       if (!params.id) {
@@ -34,12 +33,11 @@ exports.getFurnitureList = async (req, res) => {
   };
 
   exports.addFurniture = async (req, res) => {
-    console.log("hello world");
     const body = req.body;
       try {
         const pictures = body.pictures ? JSON.stringify(body.pictures) : null;
 
-          const result = await query(`INSERT INTO tblm_furniture_details 
+          const result = await query(`INSERT INTO ${furnitureTable} 
           (name, description, pictures, rental_price, owner_user_id, category_id)
           VALUES 
           ('${body.name}', 
@@ -48,10 +46,8 @@ exports.getFurnitureList = async (req, res) => {
           ${body.rental_price}, 
           ${body.owner_user_id}, 
           ${body.category_id});`);
-          console.log("added");
           res.status(200).send("Added Successfully !");
         } catch (error) {
-          console.log(error)
         handleError(error, res);
       }
     };
