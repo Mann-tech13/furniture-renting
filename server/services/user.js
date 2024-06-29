@@ -54,31 +54,32 @@ exports.login = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   const body = req.body;
+  const { name, password, email_id, logo_url, phone_number, city, address } = body
   try {
-    if (!body.name || !body.password || !body.email_id) {
+    if (!name || !password || !email_id) {
       const err = new Error("Name, password and email are mandatory");
       badRequest(err, res);
       throw err;
     }
     const userExists = await query(
-      `SELECT id FROM ${userTable} WHERE email_id = '${body.email_id}'`
+      `SELECT id FROM ${userTable} WHERE email_id = '${email_id}'`
     );
     if (userExists.length) {
       res.status(409).send({ message: "User already exists" });
     }
     const encode = await bcrypt.genSalt();
-    const hashPassword = await bcrypt.hash(body.password, encode);
+    const hashPassword = await bcrypt.hash(password, encode);
 
     const result =
       await query(`INSERT INTO ${userTable} (name, logo_url, email_id, password, phone_number, city, address)
         VALUES (
-        '${body.name}',
-        '${body.logo_url || ""}',
-        '${body.email_id}',
+        '${name}',
+        '${logo_url || ""}',
+        '${email_id}',
         '${hashPassword}',
-        '${body.phone_number}',
-        '${body.city}',
-        '${body.address}'
+        '${phone_number}',
+        '${city}',
+        '${address}'
         );
      `);
     res.status(200).send(result);
@@ -93,8 +94,8 @@ exports.updateUser = async (req, res) => {
     const accessToken = accessTokenSplit.split(" ")[1];
     const userId = validateAndGetUserIdFromAccessToken(accessToken);
     if(userId) {
-      const body = req.body;
-      if (!body.name || !body.email_id || body.password) {
+      const { name, password, email_id, logo_url, phone_number, city, address } = body
+      if (!name || !email_id || password) {
         const err = new Error("Name and email are mandatory");
         badRequest(err, res);
         throw err;
@@ -102,15 +103,15 @@ exports.updateUser = async (req, res) => {
   
       const user = (
         await query(
-          `SELECT * from ${userTable} WHERE name = '${body.name}' AND email_id = '${body.email_id}'`
+          `SELECT * from ${userTable} WHERE name = '${name}' AND email_id = '${email_id}'`
         )
       )[0];
   
       await query(`UPDATE ${userTable} SET 
-          logo_url = '${body.logo_url || user.logo_url || null}', 
-          phone_number = '${body.phone_number || user.phone_number || null}',
-          city = '${body.city || user.city || null}',
-          address = '${body.address || user.address || null}'
+          logo_url = '${logo_url || user.logo_url || null}', 
+          phone_number = '${phone_number || user.phone_number || null}',
+          city = '${city || user.city || null}',
+          address = '${address || user.address || null}'
           WHERE id = ${user.id};
        `);
       res.status(200).send("user update success");

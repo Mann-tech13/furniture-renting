@@ -6,6 +6,8 @@ require("dotenv").config();
 // Controller Imports
 const indexController = require("./controllers/index.js");
 const userController = require("./controllers/user.js");
+const wishlistController = require("./controllers/wishlist.js");
+const cartController = require("./controllers/cart.js");
 const furnitureController = require("./controllers/furniture.js");
 
 const app = express();
@@ -16,6 +18,8 @@ app.use(cors());
 // Controllers
 app.use("/", indexController);
 app.use("/user", userController);
+app.use("/wishlist", wishlistController);
+app.use("/cart", cartController);
 app.use("/furniture", furnitureController);
 
 
