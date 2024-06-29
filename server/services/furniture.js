@@ -20,15 +20,20 @@ exports.getFurniture = async (req, res) => {
 
 exports.getFurnitureList = async (req, res) => {
   const queryParams = req.query;
+  var categoryIds = queryParams.categoryIds;
     try {
         if (!queryParams.id) {
           const err = new Error("ID not found");
-          badRequest(err);
+          badRequest(err,res);
           throw err;
         }
-      const result = await query(`SELECT * FROM ${furnitureTable} WHERE owner_user_id <> ${queryParams.id}`);
+        if(!categoryIds){
+          categoryIds = '1,2,3,4,5,6,7,8'
+        }
+      const result = await query(`SELECT * FROM ${furnitureTable} WHERE owner_user_id <> ${queryParams.id} and category_id in (${categoryIds})`);
       res.status(200).send(result);
     } catch (error) {
+      console.log(error)
       handleError(error, res);
     }
   };
