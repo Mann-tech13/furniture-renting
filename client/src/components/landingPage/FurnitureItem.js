@@ -21,7 +21,7 @@ const FurnitureItem = (props) => {
       <div className="max-w-80 max-h-80 relative overflow-y-hidden">
         <div>
           <img
-            className="w-full h-full"
+            className="w-[400px] h-[200px]"
             src={props.img}
             alt={props.FurnitureItemName}
           />

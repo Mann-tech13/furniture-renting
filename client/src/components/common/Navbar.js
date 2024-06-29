@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Auth from "../auth/auth";
 import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
@@ -7,10 +7,18 @@ const Navbar = ({ user }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [authModal, setAuthModal] = useState(false);
+  const [accessToken, setAccessToken] = useState('')
+  useEffect(() => {
+    const token = window.localStorage.getItem('accessToken')
+    if(token){
+      setAccessToken(token);
+    }
+  }, [authModal])
+  
 
   return (
     <nav className="bg-white shadow-md">
-      {authModal ? (
+      {authModal && !accessToken ? (
         <>
           <Auth setAuthModal={setAuthModal} />
         </>
@@ -38,7 +46,7 @@ const Navbar = ({ user }) => {
               </div>
               <div className="hidden  md:block">
                 <div className="ml-4 flex items-center md:ml-6">
-                  {user ? (
+                  {accessToken ? (
                     <>    
                       <Link to="/cart" className="mx-5">
                         <span className="mx-3">
@@ -141,7 +149,7 @@ const Navbar = ({ user }) => {
                 className="w-full px-3 py-2 border rounded-md"
                 placeholder="Search..."
               />
-              {user ? (
+              {accessToken ? (
                 <>
                   <div className="relative">
                     <button

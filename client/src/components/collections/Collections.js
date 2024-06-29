@@ -6,38 +6,11 @@ function Collections() {
     {
       id: 1,
       FurnitureItemName: "Modern Sofa",
-      price: "$300",
+      price: "$199",
       category: "Living Room",
       img: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
-      color: "Gray",
-    },
-    {
-      id: 2,
-      FurnitureItemName: "Dining Table",
-      price: "$200",
-      category: "Dining Room",
-      img: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
-
-      color: "Brown",
-    },
-    {
-      id: 3,
-      FurnitureItemName: "Office Chair",
-      price: "$100",
-      category: "Office",
-      img: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
-
-      color: "Black",
-    },
-    {
-      id: 4,
-      FurnitureItemName: "Office Chair",
-      price: "$100",
-      category: "Office",
-      img: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
-
-      color: "Black",
-    },
+      color: "Green",
+    }
   ];
   return (
     <div className="bg-gray-100">

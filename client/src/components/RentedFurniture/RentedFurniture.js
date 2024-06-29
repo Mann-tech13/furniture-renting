@@ -6,18 +6,9 @@ const orders = [
   {
     id: 1,
     title: 'Modern Sofa',
-    rentalDate: '2023-01-15',
-    returnDate: '2023-02-15',
-    status: 'Returned',
-    image: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
-
-  },
-  {
-    id: 2,
-    title: 'Dining Table Set',
-    rentalDate: '2023-02-01',
-    returnDate: '2023-03-01',
-    status: 'Returned',
+    rentalDate: '2024-07-01',
+    returnDate: '2023-07-05',
+    status: 'Rented',
     image: "https://5.imimg.com/data5/SELLER/Default/2023/3/CV/NR/VH/182365761/imported-modern-furniture-500x500.jpg",
 
   },

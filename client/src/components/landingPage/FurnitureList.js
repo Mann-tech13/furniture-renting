@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
-import FurnitureItem from "./FurnitureItem"; // Adjust the path as per your project structure
+import FurnitureItem from "./FurnitureItem"; 
+
 
 const FurnitureList = ({furnitureItems, listType}) => {
   const [wishlist, setWishlist] = useState([]);
