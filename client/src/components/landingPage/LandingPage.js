@@ -10,7 +10,7 @@ function LandingPage() {
   return (
     <div>
       <div>
-        <Navbar  />
+        <Navbar  user={user}/>
         <FurnitureList />
 
       </div>
