@@ -1,6 +1,6 @@
 import React from "react";
 
-function Modal({ children, setAuthModal }) {
+function Modal({ children, setAuthModal, setIsRent }) {
   return (
     <div
       className="relative z-10"
@@ -20,9 +20,7 @@ function Modal({ children, setAuthModal }) {
       <div
         className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
         aria-hidden="true"
-      >
-        
-      </div>
+      ></div>
 
       <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
@@ -44,7 +42,15 @@ function Modal({ children, setAuthModal }) {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
               </svg>
             </div>  */}
-            <p className="w-full text-right cursor-pointer" onClick={() => setAuthModal(false)}>X</p>
+                <p
+                  className="w-full text-right cursor-pointer"
+                  onClick={() =>
+                    (setAuthModal && setAuthModal(false)) ||
+                    (setIsRent && setIsRent(false))
+                  }
+                >
+                  X
+                </p>
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   {/* <h3 className="text-base font-semibold leading-6 text-gray-900" id="modal-title">Deactivate account</h3> */}
                   <div className="mt-2">
