@@ -1,7 +1,7 @@
-const { query } = require("../dbconnection");
+const { query } = require("../db/dbconnection");
+const { furnitureTable } = require("../db/tables");
 const { handleError, badRequest } = require("../utils/extend");
 
-const furnitureTable = "tblm_furniture_details";
 exports.getFurniture = async (req, res) => {
     const params = req.params;
     try {
