@@ -1,4 +1,4 @@
-const { query } = require("../dbconnection");
+const { query } = require("../db/dbconnection");
 
 exports.homePage = async (req, res) => {
   try {

@@ -1,9 +1,9 @@
-const { query } = require("../dbconnection");
+const { query } = require("../db/dbconnection");
+const { userTable } = require("../db/tables");
 const { handleError, badRequest, validateAndGetUserIdFromAccessToken } = require("../utils/extend");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const userTable = "tblm_user_details";
 exports.getUser = async (req, res) => {
   const params = req.params;
   try {

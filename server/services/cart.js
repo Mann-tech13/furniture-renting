@@ -1,7 +1,7 @@
-const { query } = require("../dbconnection");
+const { query } = require("../db/dbconnection");
+const { userTable } = require("../db/tables")
 const { validateAndGetUserIdFromAccessToken } = require("../utils/extend");
 
-const userTable = "tblm_user_details";
 exports.updatecart = async (req, res) => {
   try {
     const accessTokenSplit = req.headers.authorization;
