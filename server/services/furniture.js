@@ -37,24 +37,27 @@ exports.getFurnitureList = async (req, res) => {
     }
   };
 
-  exports.addFurniture = async (req, res) => {
+exports.addFurniture = async (req, res) => {
+  try {
     const body = req.body;
-      try {
-        const pictures = body.pictures ? JSON.stringify(body.pictures) : null;
+    const accessTokenSplit = req.headers.authorization;
+    const accessToken = accessTokenSplit.split(" ")[1];
+    const userId = validateAndGetUserIdFromAccessToken(accessToken);
+    if (userId) {
+      const pictures = body.pictures ? JSON.stringify(body.pictures) : null;
 
-          const result = await query(`INSERT INTO ${furnitureTable} 
-          (name, description, pictures, rental_price, owner_user_id, category_id)
-          VALUES 
-          ('${body.name}', 
-          '${body.description}', 
-          '${pictures}', 
-          ${body.rental_price}, 
-          ${body.owner_user_id}, 
-          ${body.category_id});`);
-          res.status(200).send("Added Successfully !");
-        } catch (error) {
-        handleError(error, res);
-      }
-    };
-  
-
+      const result = await query(`INSERT INTO ${furnitureTable} 
+            (name, description, pictures, rental_price, owner_user_id, category_id)
+            VALUES 
+            ('${body.name}', 
+            '${body.description}', 
+            '${pictures}', 
+            ${body.rental_price}, 
+            ${body.owner_user_id}, 
+            ${body.category_id});`);
+      res.status(200).send("Added Successfully!");
+    }
+  } catch (error) {
+    handleError(error, res);
+  }
+};
